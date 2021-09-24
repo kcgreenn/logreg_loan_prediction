@@ -25,9 +25,9 @@ The Data Visualization button will open a dialog with multiple graphs.  The user
 ## Assessment of Accuracy
 Python libraries such as “sklearn” gave us a number of means to determine the accuracy of our regression model. The metrics module in particular offered many tools. Using its score methods, our model received the following results:
 
-Accuracy: 0.8242380468318086
-Precision: 0.826697366708408
-Recall: 0.9956215979545835
+1. Accuracy: 0.8242380468318086
+2. Precision: 0.826697366708408
+3. Recall: 0.9956215979545835
 
 
 This is accuracy and precision of around 82%, which is satisfactory for a machine learning model.  
