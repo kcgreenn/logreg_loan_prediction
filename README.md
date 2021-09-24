@@ -22,3 +22,12 @@ Warning: The SBA loan data file is quite large and machine learning algorithms c
 With the project installed, users can immediately begin using it.  Clicking on the New Loan prediction button will open a dialog with multiple inputs.  Users can enter an applicant’s information and receive the predicted chance of loan payback.
 The Data Visualization button will open a dialog with multiple graphs.  The user can use a combo box to choose which data they want to view.  The Model Statistics button opens a dialog with information on the regression model itself.  Users can view statistics like accuracy, model coefficients, and mean values of the data.
 
+## Assessment of Accuracy
+Python libraries such as “sklearn” gave us a number of means to determine the accuracy of our regression model. The metrics module in particular offered many tools. Using its score methods, our model received the following results:
+
+Accuracy: 0.8242380468318086
+Precision: 0.826697366708408
+Recall: 0.9956215979545835
+
+
+This is accuracy and precision of around 82%, which is satisfactory for a machine learning model.  
