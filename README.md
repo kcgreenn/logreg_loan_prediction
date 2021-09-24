@@ -17,6 +17,7 @@ d.	Select Python 3.9 from the dropdown
 •	sklearn
 •	statsmodels
 4.	Hold Shift + f10 to run the program.
+
 Warning: The SBA loan data file is quite large and machine learning algorithms can be computationally complex. The program may become unresponsive for periods of time on a computer with an older or low-end CPU.
 With the project installed, users can immediately begin using it.  Clicking on the New Loan prediction button will open a dialog with multiple inputs.  Users can enter an applicant’s information and receive the predicted chance of loan payback.
 The Data Visualization button will open a dialog with multiple graphs.  The user can use a combo box to choose which data they want to view.  The Model Statistics button opens a dialog with information on the regression model itself.  Users can view statistics like accuracy, model coefficients, and mean values of the data.
