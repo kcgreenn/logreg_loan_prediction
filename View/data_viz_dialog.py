@@ -14,7 +14,7 @@ import matplotlib as plt
 
 plt.rc("font", size=12)
 
-
+# View controller of the Data Visualization Screen
 class Ui_Dialog(QDialog):
     def __init__(self, data):
         super().__init__()
