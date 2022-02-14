@@ -14,6 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QButtonGroup
 
 
+# View controller for the new loan prediction screen
 class New_Loan_Dlg(QDialog):
     def __init__(self, data, lr):
         self.data = data
@@ -212,6 +213,7 @@ class New_Loan_Dlg(QDialog):
         self.label_11.setToolTip("The Total Amount of The Loan Approved By The Bank")
         self.label_12.setToolTip("The Percentage Chance That The Business Will Pay The Loan Back In Full.")
 
+    # Prefill inputs with mean data for each feature
     def get_input(self):
         self.pred_data = {'Area_Urban': [], 'Area_Rural': [], 'Business_New': [], 'Business_Existing': [], 'Term': [],
                      'NoEmp': [], 'CreateJob': [], 'RetainedJob': [], 'DisbursementGross': [], 'GrAppv': [],
@@ -229,6 +231,7 @@ class New_Loan_Dlg(QDialog):
         self.pred_data['SBA_Appv'].append(self.sba_appv_box.value())
         self.pred_data['ApprovalFY'].append(self.approvalfy_box.value())
 
+    # Return a percentage chance of the loan being paid in full based on user input
     def make_pred(self):
         self.get_input()
         df = pd.DataFrame(data=self.pred_data)
@@ -237,6 +240,7 @@ class New_Loan_Dlg(QDialog):
         default_perc = "%.2f" % default_perc + '%'
         self.label_13.setText(default_perc)
 
+    # Alter color of prediction based on percentage(red=low, high=green)
     def handle_label_color(self, percent):
         if percent < 50:
             self.label_13.setStyleSheet('background:#d9534f;')
@@ -244,10 +248,12 @@ class New_Loan_Dlg(QDialog):
             self.label_13.setStyleSheet('background:#f0ad4e;')
         else:
             self.label_13.setStyleSheet('background:#5cb85c')
-
+    
+    # find the mean values of each feature in the data
     def get_mean_vals(self):
         return self.data.get_data().groupby('MIS_Status_P I F').mean()
 
+    # Prefill the input fields with the mean values of each feature
     def fill_mean_vals(self):
         mean_vals = self.get_mean_vals()
         self.age_exist_radio_btn.setChecked(True)
