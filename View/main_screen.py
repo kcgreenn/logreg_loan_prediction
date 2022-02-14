@@ -20,6 +20,7 @@ from View import data_viz_dialog
 from View import model_stats
 
 
+# View controller of the Main Screen of the application
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         self.filepath = './dummied_sba.csv'
@@ -97,18 +98,22 @@ class Ui_MainWindow(object):
         prog_dlg.exec()
         self.find_overall_stats()
 
+    # Open the new loan dialog box upon button click
     def handle_new_loan_click(self):
         new_loan_dlg = new_loan_dialog.New_Loan_Dlg(self.data, self.lr)
         new_loan_dlg.exec()
 
+    # Open data visualization screen upon button click
     def handle_data_viz_click(self):
         data_viz_dlg = data_viz_dialog.Ui_Dialog(self.data)
         data_viz_dlg.exec()
 
+    # Open the model statistics screen upon button click
     def handle_model_stats_btn(self):
         mdl_stats = model_stats.Ui_Dialog(self.data, self.lr)
         mdl_stats.exec()
 
+    # Create a chart from two sets of data
     def create_2set_chart(self, set0Title, set0, set1Title, set1, title, categories):
         self.set0 = QBarSet(set0Title)
         self.set1 = QBarSet(set1Title)
@@ -133,6 +138,7 @@ class Ui_MainWindow(object):
         self.chart.createDefaultAxes()
         self.chart.setAxisX(self.axis, self.series)
 
+    # Find the overall chargeoff rates from the data
     def find_overall_stats(self):
         data = self.data.get_data()
         count_chgoff = len(data[data['MIS_Status_P I F'] == 0])
