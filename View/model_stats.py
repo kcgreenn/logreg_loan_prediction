@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog
 
 
+# View controller for the model statistics screen
 class Ui_Dialog(QDialog):
     def __init__(self, data, lr):
         self.data = data.get_data()
@@ -68,6 +69,7 @@ class Ui_Dialog(QDialog):
         self.print_cnf()
         self.print_mean()
 
+    # Find and print the mean data for each chargeoff status
     def print_mean(self):
         self.mean_table = QtWidgets.QTableWidget(self)
         self.mean_table.setGeometry(QtCore.QRect(300, 220, 380, 106))
@@ -97,6 +99,7 @@ class Ui_Dialog(QDialog):
         self.mean_table.setHorizontalHeaderLabels(features)
         self.mean_table.setVerticalHeaderLabels(['chgoff', 'p i f'])
 
+    # Find and display the accuracy metrics of the model
     def print_metrics(self):
         metrics = self.lr.get_metrics()
         acc = "%.2f" % (metrics['Accuracy'] * 100) + '%'
@@ -107,10 +110,12 @@ class Ui_Dialog(QDialog):
         self.precisionsLabel.setText('Precision: ' + prec)
         self.recallLabel.setText('Recall: ' + rec)
 
+    # Print the summary of the regression model
     def print_summary(self):
         summary = self.lr.get_sm_results()
         self.summary_table.setText(summary.as_text())
 
+    # Display the CNF chart
     def print_cnf(self):
         self.cnf_table = QtWidgets.QTableWidget(self)
 
