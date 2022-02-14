@@ -1,4 +1,4 @@
-﻿# Loan Default Prediction Machine Learning Application
+﻿# Logistic Regression Loan Prediction Application
  
  
  ## Quick Start Guide
