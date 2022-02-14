@@ -52,7 +52,7 @@ class Ui_Dialog(QDialog):
         self.find_overall_stats()
         self.add_factor_options()
 
-
+    # Creates a bar chart from two sets of data
     def create_2set_chart(self, set0Title, set0, set1Title, set1, title, categories):
         self.chartview.close()
         self.set0 = QBarSet(set0Title)
@@ -85,6 +85,7 @@ class Ui_Dialog(QDialog):
 
         self.setLayout(self.layout)
 
+    # Creates a bar chart from 4 sets of data
     def create_4set_chart(self, set0Title, set0, set1Title, set1, set2Title, set2, set3Title, set3, title, categories):
         self.chartview.close()
 
@@ -130,15 +131,18 @@ class Ui_Dialog(QDialog):
 
         self.setLayout(self.layout)
 
+    # Set the layout of the data visualization screen
     def set_viz_layout(self):
         self.layout.addWidget(self.label)
         self.layout.addWidget(self.factor_combo_box)
         self.layout.addWidget(self.pushButton)
         self.setLayout(self.layout)
 
+    # Add options to the factor combo box
     def add_factor_options(self):
         self.factor_combo_box.addItems(self.factor_list)
 
+    # Handles clicking of the chart plot button
     def handle_plot_btn_click(self):
         if self.factor_combo_box.currentText() == 'Overall':
             self.find_overall_stats()
@@ -153,6 +157,7 @@ class Ui_Dialog(QDialog):
         elif self.factor_combo_box.currentText() == 'Region':
             self.find_region_stats()
 
+    # Find the overall chargeoff rate of the data
     def find_overall_stats(self):
         data = self.data.get_data()
         count_chgoff = len(data[data['MIS_Status_P I F'] == 0])
@@ -162,6 +167,7 @@ class Ui_Dialog(QDialog):
 
         self.create_2set_chart('ChgOff', [pct_chgoff * 100], 'P I F', [pct_pif * 100], 'Overall ChgOff Rate', [''])
 
+    # Find the chargeoff rates of rural and urban areas
     def find_area_stats(self):
         data = self.data.get_data()
         urban_data = data[data['Area_Urban'] == 1]
@@ -177,6 +183,7 @@ class Ui_Dialog(QDialog):
         self.create_2set_chart('Rural', [percent_rural_pif], 'Urban', [percent_urban_pif], 'P I F rate By Geo. Area',
                           ['Geo. Area'])
 
+    # Find cahrgeoff rates against new or old business status
     def find_age_stats(self):
         data = self.data.get_data()
         new_data = data[data['Business_Existing'] == 0]
@@ -194,6 +201,7 @@ class Ui_Dialog(QDialog):
         self.create_2set_chart('New', [percent_new_pif], 'Exist', [percent_exist_pif], 'P I F rate By Business Age',
                           ['Age'])
 
+    # Find chargeoff rates by fiscal year
     def find_fy_stats(self):
         data = self.data.get_data()
         fy70s_data = data[(data['ApprovalFY'] >= 1970) & (data['ApprovalFY'] < 1980)]
@@ -222,6 +230,7 @@ class Ui_Dialog(QDialog):
         self.create_4set_chart("70's", [percent_70s_pif], "80's", [percent_80s_pif], "90's", [percent_90s_pif],
                                "00's", [percent_00s_pif], 'P I F rate By Decade', ['Decade'])
 
+    # Find chargeoff rates by term of the loan
     def find_term_stats(self):
         data = self.data.get_data()
         lt50_data = data[(data['Term'] >= 0) & (data['Term'] < 51)]
@@ -250,6 +259,7 @@ class Ui_Dialog(QDialog):
         self.create_4set_chart("Less Then 50", [percent_lt50_pif], "50 - 125", [percent_lt125_pif], "125 - 200", [percent_lt200_pif],
                                "Greater Then 200", [percent_gt200_pif], 'P I F rate By Term Length (in months)', ['Months'])
 
+    # Find chargeoff rates by timezone 
     def find_region_stats(self):
         data = self.data.get_data()
         west_data = data.loc[data['State'].str.contains('CA|OR|WA|NV'), :]
