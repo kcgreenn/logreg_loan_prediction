@@ -2,7 +2,7 @@
  
  
  ## Quick Start Guide
- The application can be downloaded from here: https://drive.google.com/drive/folders/1QNbtPltEAwr5TWPEaajnwg6eAw20xOd. It can be executed by double clicking on the “main” file in that directory.  To limit the overall filesize, I only included about 10% of the original SBA data.  This subset is fairly representative of the original dataset.  The accuracy of the model is slightly lower, but still above 80%.
+ The application can be downloaded from here: https://drive.google.com/drive/folders/1QNbtPltEAwr5TWPEaajnwg6eAw20xOd_?usp=sharing. It can be executed by double clicking on the “main” file in that directory.  To limit the overall filesize, I only included about 10% of the original SBA data.  This subset is fairly representative of the original dataset.  The accuracy of the model is slightly lower, but still above 80%.
 The original data file is included with the source code in the ‘src’ directory.  To run the program from source you may follow these instructions:
 1.	Open the code file in the PyCharm Python IDE.
 2.	Set the Python interpreter to 3.9: 
